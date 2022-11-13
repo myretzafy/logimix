@@ -1,0 +1,52 @@
+<header>
+  <div class="blackm">
+       <ul class="men1">
+        <li><a href="#">Sport</a></li>
+        <li><a href="#">Technology</a></li>
+        <li><a href="#">Vetements</a></li>
+     {%  if (is_granted('ROLE_ADMIN'))%}
+        <li class='adm'><a href="#">administrateur</a>
+                      <ul class='smen'>
+                         <li ><a href="{{path('admin_user')}}">User</a> </li>
+                         <li><a href="{{path('admin_article')}}">Aricle</a> </li>
+                         <li><a href="">Categorie</a> </li>
+                      </ul>
+        </li>
+        {% endif %}
+       </ul>
+       <ul class="men2">
+        {% if app.user %}
+          <li><a href="{{ path('app_user_logout')}}">Logout</a></li>
+        {% else %}
+            <li><a href="{{ path('app_user_login') }}">Login</a></li>
+            <li><a href="{{path('app_user_add')}}">Inscrire</a></li>
+         {% endif  %}
+       
+       </ul>
+  </div>
+ <div class="whitem">
+     <div class="texto">     
+          <h3>Daily News WordPress Theme</h3>
+          <p>Just another CodexCoder Demos site</p>
+     </div>
+     
+     <div class="bann">
+             <img class="x active" src="{{ asset('image/banniere/ord5.jpg')}}" id="1" alt=""  > 
+             <img class="x" src="{{ asset('image/banniere/ordi4.jpg')}}" id="mm" alt="" >
+             <img class="x" src="{{ asset('image/banniere/techno1.jpg')}}" id="3" alt="" >
+     </div>
+     <div class='left'><i class="fa-sharp fa-solid fa-angle-left"></i></div>
+     <div class='right'><i class="fa-sharp fa-solid fa-angle-right"></i></div>
+ </div>
+ <div class="bluem">
+       <ul class="men1">
+        <li><a href="#">Sport</a></li>
+        <li><a href="#">Technology</a></li>
+        <li><a href="#">Vetements</a></li>
+        <li><a href="#">Electro menagere</a></li>
+       </ul>
+      
+  </div>
+
+
+</header>

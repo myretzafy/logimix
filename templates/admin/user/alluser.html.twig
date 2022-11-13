@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+
+   <h2>liste des users</h2>
+   <div class="container">
+   
+          {% for message in app.Flashes('success') %}
+          <div class="alert alert-success">
+              {{message}}
+          </div>
+      {% endfor %}
+         <table class="mytable">
+         <thead>
+            <th>Username</th>
+            <th>Roles</th>
+           
+             <th colspan="2">Action</th>
+             
+         </thead>
+         <tbody>
+            {% for user in users %} 
+              <tr> 
+                <td class="date">{{user.username}}</td> 
+                <td class="des">
+                        {% for role in user.roles %}
+                              {% if role =='ROLE_USER' %}
+                                          UTILISATEUR
+                              {% elseif role =='ROLE_ADMIN' %}   
+                                       <span style='color:#ff4500;'> ADMINISTRATEUR</span>   et
+                               {% endif %}                  
+                        {% endfor %}
+                </td>
+               
+                <td class='date'><a href="{{path('admin_user_edit',{'id': user.id}) }}"><i class="fa-duotone fa-solid fa-pencil"></i></a></td>
+                <td class='date'><form method='post' action=""
+                     onsubmit="return confirm('Etes vous sur de vouloir supprimer cet article ?')">
+                     <input type="hidden" name="_method" value='DELETE'>
+                     <input type="hidden" name="_token" value="{{ csrf_token('delete'~ user.id)}}">
+                     <button style="border:none;background-color:#ffffff;"><i class="fa-duotone fa-solid fa-trash fa-xm"></i></button>
+                </form></td>
+             
+              {#   <td class='date'><a href="{{ path('admin_article_delete',{'id': article.getId()}) }}"><i class="fa-duotone fa-solid fa-trash fa-xm"></i></a></td> #}
+              </tr> 
+            {% endfor %}
+         </tbody>
+         <tfoot><tr>
+                  <td colspan="7">
+                        
+                  </td>
+         </tr></tfoot>
+         </table>
+   
+   
+   
+   </div>
+
+{% endblock  %}

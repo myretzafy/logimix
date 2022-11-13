@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Nouveau utilisateur{% endblock %}
+
+{% block body %}
+  <div class="tete">
+       <h2>Modification utilisateur</h2>
+    </div>
+
+{{form_start(form)}}
+            <div class="form">
+
+                   <div class="lab-design">
+                        {{ form_label(form.username, 'Utilisateur:', {'label_attr': {'class': 'fooddes'}}) }}
+                  </div>                  
+                  <div class="input-design">
+                       {{  form_widget(form.username)}}
+                  </div> 
+                   <div class="lab-role">
+                        {{ form_label(form.roles, 'Roles:', {'label_attr': {'class': 'fooddes'}}) }}
+                  </div>                  
+                  <div class="input-role">
+                       {{  form_widget(form.roles)}}
+                  </div>
+                 
+                    
+
+                       
+
+               <div class="btn1">
+                <button class="btn btn-info">Valider</button>
+               </div>
+                
+              
+             </div>    
+              
+
+            </div>
+            {{ form_rest(form)}}
+    {{form_end(form)}}  
+
+{% endblock %}

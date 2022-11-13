@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+      <h2> Latest products</h2>
+      <div class="container">
+           <div class="diapos owl-carousel owl-theme">
+                  <div class="slid item">
+                         <img src="{{asset('image/article/nike1.jpg')}}" alt="">
+                         <div class="description">
+                           Lorem ipsum dolor sit amet consecteturs
+                         </div>
+                         <div class="price"><span>70 €</span> &nbsp &nbsp <a  href="#" >read more</a></div>
+                  </div>         
+                  <div class="slid item">
+                         <img src="{{asset('image/article/nike2.jpg')}}" alt="">
+                         <div class="description">
+                           Lorem ipsum dolor sit amet consecteturs
+                         </div>
+                         <div class="price"><span>70 €</span> &nbsp &nbsp<a href="">read more</a></div>
+                  </div>       
+                  <div class="slid item">
+                         <img src="{{asset('image/article/nike3.jpg')}}" alt="">
+                         <div class="description">
+                           Lorem ipsum dolor sit amet consecteturs
+                         </div>
+                         <div class="price"><span>70 €</span> &nbsp &nbsp<a href="">read more</a></div>
+                  </div>       
+                  <div class="slid item">
+                         <img src="{{asset('image/article/nike4.jpg')}}" alt="">
+                         <div class="description">
+                           Lorem ipsum dolor sit amet consecteturs
+                         </div>
+                         <div class="price"><span>70 €</span> &nbsp &nbsp<a href="">read more</a></div>
+                  </div>      
+                  <div class="slid item">
+                         <img src="{{asset('image/article/nike5.jpg')}}" alt="">
+                         <div class="description">
+                           Lorem ipsum dolor sit amet consecteturs
+                         </div>
+                         <div class="price"><span>70 €</span> &nbsp &nbsp<a href="">read more</a></div>
+                  </div>        
+           </div>
+
+           <div class="prodwrap">
+                <h2>Tous les produit existants</h2>
+                <div class="posters">
+
+                        {% for article in articles  %}
+                                <div class="post">
+                                          <img src="{{ asset('image/article/'~ article.photo)}}" alt="">
+                                          <div class="article">
+                                            {{article.designation}}
+                                          </div>
+                                          <div class="prix">
+                                               <span class="ppp">{{ article.prix}}</span> &nbsp &nbsp &nbsp <a href="{{ path('app_article_show',{id:article.getId(),slug:article.getslug()})}}">read more</a>
+                                         </div>
+                                </div>
+                        {% endfor %} 
+                                   
+                </div>
+           </div>
+      </div>
+{% endblock %}

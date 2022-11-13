@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+        
+      <div class="container">
+       <h3>Gerer les articles</h3>
+       {% for message in app.Flashes('success') %}
+          <div class="alert alert-success">
+              {{message}}
+          </div>
+      {% endfor %}
+         <table class="mytable">
+         <thead>
+            <th>Photo</th>
+            <th>Designation</th>
+            <th>pointure</th>
+            <th>Categorie</th>
+            <th>Prix</th>
+            <th>Posted at</th>
+             <th colspan="2">Action</th>
+             
+         </thead>
+         <tbody>
+            {% for article in articles %} 
+              <tr> 
+                <td class="photo"><img src="{{ asset('image/article/'~ article.photo)}}" alt="" style="width:70px;height:70px;border-radius:50%;"></td> 
+                <td class="des">{{ article.designation }}</td>
+                <td>{{ article.getpoin()}}</td>
+                 <td class="des">{{ article.category.categorie }}</td>
+                <td class='monn'>{{ article.prix | number_format(2,'.',' ')  }} €</td>
+                <td class='date'>{{ article.postedAt|date('d/m/Y') }}</td>
+                <td class='date'><a href="{{path('admin_article_edit',{'id': article.id}) }}"><i class="fa-duotone fa-solid fa-pencil"></i></a></td>
+                <td class='date'><form method='post' action="{{path('admin_article_delete',{'id': article.getId()}) }}"
+                     onsubmit="return confirm('Etes vous sur de vouloir supprimer cet article ?')">
+                     <input type="hidden" name="_method" value='DELETE'>
+                     <input type="hidden" name="_token" value="{{ csrf_token('delete'~ article.id)}}">
+                     <button style="border:none;background-color:#ffffff;"><i class="fa-duotone fa-solid fa-trash fa-xm"></i></button>
+                </form></td>
+             
+              {#   <td class='date'><a href="{{ path('admin_article_delete',{'id': article.getId()}) }}"><i class="fa-duotone fa-solid fa-trash fa-xm"></i></a></td> #}
+              </tr> 
+            {% endfor %}
+         </tbody>
+         <tfoot><tr>
+                  <td colspan="7">
+                        <a class="new" href="{{path('admin_article_new')}}">Ajout article</a>
+                  </td>
+         </tr></tfoot>
+         </table>
+         </div>
+{% endblock %}

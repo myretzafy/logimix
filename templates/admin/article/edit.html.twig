@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+    <div class="tete">
+       <h2>Modification article</h2>
+    </div>
+    
+
+    {{form_start(form)}}
+            <div class="form">
+
+                   <div class="lab-design">
+                        {{ form_label(form.designation, 'Designation:', {'label_attr': {'class': 'fooddes'}}) }}
+                  </div>                  
+                  <div class="input-design">
+                       {{  form_widget(form.designation)}}
+                  </div> 
+                  
+                
+                   <div class="lab-prix">
+                       {{ form_label(form.prix, 'Prix:', {'label_attr': {'class': 'foo'}}) }}
+                   </div>
+                    <div class="input-prix">
+                       {{form_widget(form.prix)}}
+                  </div> 
+
+                    <div class="lab-category">
+                       <span>Categorie:</span>
+                    </div>
+                    <div class="input-category">
+                       {{form_widget(form.category)}}
+                    </div>  
+
+                     <div class="lab-photo">
+                       <span>Photo:</span>
+                    </div>
+                    <div class="input-photo">
+                       {{form_widget(form.photo)}}:
+                    </div>
+                   <div class="lab-pointure">
+                        <span>pointure:</span>
+                  </div>                  
+                  <div class="input-pointure">
+                       {{  form_widget(form.pointure)}}
+                  </div> 
+             
+
+           
+
+               <div class="btn">
+                <button class="btn btn-info">Valider</button>
+               </div>
+                
+              
+             </div>    
+              
+
+            </div>
+            {{ form_rest(form)}}
+    {{form_end(form)}}  
+{% endblock %}

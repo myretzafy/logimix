@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+
+ <h1> </h1>
+ <div class="cadre">
+ 
+        <div class="wrap">
+        
+            <div id="image">
+                <img src="{{asset('image/article/'~ article.photo)}}" alt="">
+            </div>
+            <div id="info">
+                <h2>{{article.designation}}</h2>
+                <hr>
+                <div class="pric">&nbsp &nbsp Prix :<span class="ppp">{{article.prix| number_format(2,'.',' ')}} €</span></div>
+       
+                                       {#########Contact###########}
+                                      
+                       <div class="contact">
+                        <h3 style="color:#1d7c83;margin-top:50px;">Nous Contacter</h3>
+                           {{form_start(form)}}
+                                  <div class="formulaire">
+                                        <div class="lib firstname">
+                                                    <span>Nom:</span>
+                                        </div>
+                                        <div class="input firstname">
+                                                    {{form_widget(form.firstname)}}
+                                        </div>
+
+                                        <div class="lib lastname">
+                                                    <span>Prenom:</span>
+                                        </div>
+                                        <div class="input lastname">
+                                                    <span> {{form_widget(form.lastname)}}</span>
+                                        </div>
+
+                                         <div class="lib phone">
+                                                    <span>Phone:</span>
+                                        </div>
+                                        <div class="input phone">
+                                                    <span> {{form_widget(form.phone)}}</span>
+                                        </div>
+
+                                         <div class="lib email">
+                                                    <span>E mail:</span>
+                                        </div>
+                                        <div class="input email">
+                                                    <span> {{form_widget(form.email)}}</span>
+                                        </div>
+                                         <div class="lib message">
+                                                    <span>Message:</span>
+                                        </div>
+                                        <div class="input message">
+                                                    <span> {{form_widget(form.message)}}</span>
+                                        </div>
+                                        <div class="submit">
+                                            <button class='btn btn-info'>Contacter</button>
+                                        </div>
+                                  
+                                  </div>
+                                  
+
+                                  {{ form_rest(form)}}
+                            {{form_end(form)}}
+                       </div>
+
+            </div>
+        
+        </div>
+ 
+  
+ </div>
+
+
+
+{% endblock %}
